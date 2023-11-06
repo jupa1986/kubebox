@@ -41,20 +41,19 @@ RUN mkdir .antigen && \
 
 RUN git clone --depth 1 https://github.com/asdf-vm/asdf.git --branch ${ASDF_VERSION} .asdf && \
     source .asdf/asdf.sh && \
-#    asdf plugin add awscli && \
-#    asdf plugin add gcloud && \
     asdf plugin add jq && \
     asdf plugin add python && \
     asdf plugin add java && \
     asdf plugin add age && \
-#    asdf plugin add eksctl && \
     asdf plugin add helm && \
     asdf plugin add helm-diff && \
     asdf plugin add helmfile && \
     asdf plugin add k9s && \
     asdf plugin add kubectl && \
     asdf plugin add velero && \
+    asdf plugin add kubeseal && \
     asdf plugin add kubectx && \
+    asdf plugin add krew && \
     asdf plugin add terraform && \
     asdf plugin add terraform-docs && \
     asdf install && \
@@ -69,6 +68,9 @@ RUN git clone --depth 1 https://github.com/asdf-vm/asdf.git --branch ${ASDF_VERS
 RUN source /${USER}/.asdf/asdf.sh && \
     rm -f /${USER}/.asdf/shims/* && \
     asdf reshim
+
+# Mount here
+RUN mkdir win
 
 WORKDIR /root/labs
 
